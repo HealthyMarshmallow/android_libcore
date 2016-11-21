@@ -108,10 +108,6 @@ public final class Dex {
             ZipFile zipFile = new ZipFile(file);
             ZipEntry entry = zipFile.getEntry(DexFormat.DEX_IN_JAR_NAME);
             if (entry != null) {
-<<<<<<< HEAD
-                try (InputStream inputStream = zipFile.getInputStream(entry)) {
-                    loadFrom(inputStream);
-=======
                 InputStream inputStream = null;
                 try {
                     inputStream = zipFile.getInputStream(entry);
@@ -120,17 +116,12 @@ public final class Dex {
                     if (inputStream != null) {
                         inputStream.close();
                     }
->>>>>>> slimsaber/mm6.0
                 }
                 zipFile.close();
             } else {
                 throw new DexException("Expected " + DexFormat.DEX_IN_JAR_NAME + " in " + file);
             }
         } else if (file.getName().endsWith(".dex")) {
-<<<<<<< HEAD
-            try (InputStream inputStream = new FileInputStream(file)) {
-                loadFrom(inputStream);
-=======
             InputStream inputStream = null;
             try {
                 inputStream = new FileInputStream(file);
@@ -139,7 +130,6 @@ public final class Dex {
                 if (inputStream != null) {
                     inputStream.close();
                 }
->>>>>>> slimsaber/mm6.0
             }
         } else {
             throw new DexException("unknown output extension: " + file);
@@ -206,10 +196,6 @@ public final class Dex {
     }
 
     public void writeTo(File dexOut) throws IOException {
-<<<<<<< HEAD
-        try (OutputStream out = new FileOutputStream(dexOut)) {
-            writeTo(out);
-=======
         OutputStream out = null;
         try {
             out = new FileOutputStream(dexOut);
@@ -218,7 +204,6 @@ public final class Dex {
             if (out != null) {
                 out.close();
             }
->>>>>>> slimsaber/mm6.0
         }
     }
 
